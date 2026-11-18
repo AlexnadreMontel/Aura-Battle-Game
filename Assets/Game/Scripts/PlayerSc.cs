@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+
 public class PlayerSc : MonoBehaviour
 {
     private int playerAura;
-    private string playerName;
+    [SerializeField] private string playerName;
     List<Card> cardHand , cardDeck;
 
     public void Init()
@@ -19,6 +20,20 @@ public class PlayerSc : MonoBehaviour
             cardHand.Add(cardDeck[0]);
             cardDeck.RemoveAt(0);
         }
+    }
+
+    public string GetName()
+    {
+        return playerName;
+    }
+    
+    public void AddAura(int  nbToAdd)
+    {
+        playerAura = +nbToAdd;
+    }
+    public void RemoveAura(int   nbToRemove)
+    {
+        playerAura=-nbToRemove;
     }
     
     

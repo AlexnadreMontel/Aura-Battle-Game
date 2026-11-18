@@ -2,18 +2,21 @@ using UnityEngine;
 
 public abstract class Card : MonoBehaviour
 {
+    public string CardName;
     public string eventToSubscribe;
 
     public virtual void Use()
     {
-        EventManager.Instance.FindEvent(eventToSubscribe).AddListener(Effect);
+        GeneralManager.Instance.eventManager.FindEvent(eventToSubscribe).AddListener(Effect);
     }
 
-    public virtual void Effect()
+    public virtual void Effect()    
     {
-        Debug.Log(gameObject.name);
-        
-        EventManager.Instance.FindEvent(eventToSubscribe).RemoveListener(Effect);
-        
+        Debug.Log(GeneralManager.Instance.eventManager.currentPlayer.GetName()+ " use move : " + CardName);
+        GeneralManager.Instance.eventManager.FindEvent(eventToSubscribe).RemoveListener(Effect);
     }
+    
 }
+
+
+
